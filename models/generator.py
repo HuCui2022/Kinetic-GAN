@@ -183,7 +183,7 @@ class st_gcn(nn.Module):
 
     
     def upsample_s(self, tensor):
-
+        # upsample of the graph.
         ids  = []
         mean = []
         for umap in self.graph.mapping[self.lvl]:
