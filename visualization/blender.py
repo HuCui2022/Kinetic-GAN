@@ -75,14 +75,15 @@ bone_order = {'Hips':1,
               'Shoulder.R':8, 'Arm.R':9, 'Forearm.R':10, 'Hand.R':11, 'Thumb.R':24, 'Finger.R':23,
               'Shoulder.L':4, 'Arm.L':5, 'Forearm.L':6, 'Hand.L':7, 'Thumb.L':22, 'Finger.L':21}
 
-arm = bpy.data.objects['Armature'] 
-s=bpy.context.scene
+arm = bpy.data.objects['Armature'] # 创建一个骨骼对象 名称为 Armature
+s=bpy.context.scene  # 当前场景
+
 
               
 print(len(bone_order))
 
 print(bone_order.keys())
-bpy.context.active_object.animation_data_clear()
+bpy.context.active_object.animation_data_clear()  #清楚骨骼动画
 
 for t_f in range(len(data)):
 
@@ -95,12 +96,13 @@ for t_f in range(len(data)):
             
             
             print(new_loc[0], new_loc[1], new_loc[2])
-            print(bone.location[0],bone.location[2],bone.location[1])
+            print(bone.location[0],bone.location[2],bone.location[1])  ## 打印坐标位置。
             
             
             if bone_order[key] == 1 or bone_order[key]==3 or bone_order[key]==2 or bone_order[key]==19 or bone_order[key]==15:
-                bpy.ops.object.mode_set(mode='POSE')
-                
+                bpy.ops.object.mode_set(mode='POSE')  ## 切换到姿态模式
+                    
+                # 设定骨骼位置
                 bone.location[0] = new_loc[0]
                 bone.location[1] = new_loc[2]
                 bone.location[2] = -new_loc[1]
@@ -113,7 +115,7 @@ for t_f in range(len(data)):
             
             else:
                 
-                bpy.ops.object.mode_set(mode='POSE')
+                bpy.ops.object.mode_set(mode='POSE')  ## 切换到姿态模式
                 
 
                 v = new_loc - bone.head
